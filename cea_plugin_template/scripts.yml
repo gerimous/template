@@ -1,9 +1,9 @@
 Sensitivity-demand-simulate:
 
   - name: sensitivity-demand-simulate
-    label: Sensitivity Analysis II (simulation)
+    label: Sensitivity Analysis simulation
     description: Simulate demand for sensitivity analysis samples
-    interfaces: [cli, arcgis, dashboard]
+    interfaces: [cli, dashboard]
     module: cea.analysis.sensitivity.sensitivity_demand_simulate
     parameters: ['general:scenario', 'general:multiprocessing',
                  'sensitivity-demand:samples-folder', 'sensitivity-demand:simulation-folder',
