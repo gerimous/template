@@ -103,38 +103,38 @@ def read_samples(samples_path):
     return samples
 
 
-def simulate_demand_sample(locator, config, output_parameters):
-    """
-    Run a demand simulation for a single sample. This function expects a locator that is already initialized to the
-    simulation folder, that has already been prepared with `apply_sample_parameters`.
+# def simulate_demand_sample(locator, config, output_parameters):
+#     """
+#     Run a demand simulation for a single sample. This function expects a locator that is already initialized to the
+#     simulation folder, that has already been prepared with `apply_sample_parameters`.
 
-    :param locator: The InputLocator to use for the simulation
-    :type locator: InputLocator
+#     :param locator: The InputLocator to use for the simulation
+#     :type locator: InputLocator
 
-    :param weather: The path to the weather file (``*.epw``) to use for simulation. See the `weather_path` parameter in
-                    `cea.demand.demand_main.demand_calculation` for more information.
-    :type weather: str
+#     :param weather: The path to the weather file (``*.epw``) to use for simulation. See the `weather_path` parameter in
+#                     `cea.demand.demand_main.demand_calculation` for more information.
+#     :type weather: str
 
-    :param output_parameters: The list of output parameters to save to disk. This is a column-wise subset of the
-                              output of `cea.demand.demand_main.demand_calculation`.
-    :type output_parameters: list of str
+#     :param output_parameters: The list of output parameters to save to disk. This is a column-wise subset of the
+#                               output of `cea.demand.demand_main.demand_calculation`.
+#     :type output_parameters: list of str
 
-    :return: Returns the columns of the results of `cea.demand.demand_main.demand_calculation` as defined in
-            `output_parameters`.
-    :rtype: pandas.DataFrame
-    """
+#     :return: Returns the columns of the results of `cea.demand.demand_main.demand_calculation` as defined in
+#             `output_parameters`.
+#     :rtype: pandas.DataFrame
+#     """
 
-    # MODIFY CONFIG FILE TO RUN THE DEMAND FOR ONLY SPECIFIC QUANTITIES
-    config.demand.resolution_output = "monthly"
-    config.multiprocessing = False
-    config.demand.massflows_output = []
-    config.demand.temperatures_output = []
-    config.demand.format_output = "csv"
-    config.demand.override_variables = True
+#     # MODIFY CONFIG FILE TO RUN THE DEMAND FOR ONLY SPECIFIC QUANTITIES
+#     config.demand.resolution_output = "monthly"
+#     config.multiprocessing = False
+#     config.demand.massflows_output = []
+#     config.demand.temperatures_output = []
+#     config.demand.format_output = "csv"
+#     config.demand.override_variables = True
 
-    # force simulation to be sequential
-    totals, time_series = demand_main.demand_calculation(locator, config)
-    return totals[output_parameters], time_series
+#     # force simulation to be sequential
+#     totals, time_series = demand_main.demand_calculation(locator, config)
+#     return totals[output_parameters], time_series
 
 
 def simulate_demand_batch(sample_index, batch_size, samples_folder, scenario, simulation_folder, config,
